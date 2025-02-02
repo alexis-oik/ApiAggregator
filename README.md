@@ -26,7 +26,7 @@ Table of Contents
 Architecture
 ------------
 
-The API Aggregator is structured around a modular architecture, where each feature is encapsulated in its own namespace. The application uses dependency injection to manage service lifetimes and configurations, allowing for easy testing and maintenance.
+The API Aggregator is structured around a vertical slice modular architecture, where each feature is encapsulated in its own namespace. The application uses dependency injection to manage service lifetimes and configurations, allowing for easy testing and maintenance.
 
 Endpoints
 ---------
