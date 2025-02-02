@@ -15,7 +15,6 @@ builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
 builder.Services.AddProblemDetails();
 
 builder.Services.AddMemoryCache();
-builder.Services.AddOutputCache();
 
 builder.Services.AddSingleton<StatisticService>();
 
@@ -66,7 +65,6 @@ app.MapAggregateEndpoints();
 app.MapStatisticEndpoints();
 
 app.UseHttpsRedirection();
-app.UseOutputCache();
 app.UseExceptionHandler();
 
 app.Run();
