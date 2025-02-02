@@ -34,11 +34,15 @@ namespace ApiAggregator.Features.Aggregate
                     news.Data.Articles = NewsApiService.FilterAndSortArticles(news.Data.Articles!, sortBy, filterBy);
                 }
 
-                return Results.Ok(news.Data);
+                return Results.Ok(
+                    new AggregateResponse(
+                        weather.Data,
+                        news.Data,
+                        spotify.Data));
             })
                 .Produces<AggregateResponse>(StatusCodes.Status200OK)
                 .Produces(StatusCodes.Status503ServiceUnavailable)
-                .WithName("Feed");
+                .WithName("Aggregate");
         }
     }
 }

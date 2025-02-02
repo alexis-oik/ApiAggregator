@@ -20,10 +20,9 @@ namespace ApiAggregator.Features.NewsApi
 
         public async Task<Result<NewsApiResponse>> GetNewsAsync(string query)
         {
-            _logger.LogError("Getting news for query: {Query}", DateTime.Now.Date);
 
             var response = await _httpClient.GetAsync(
-                $"{_configuration["NewsApi:ApiUrl"]}/everything?q={query}&from={DateTime.Now.Date.ToString("yyyy-dd-MM")}&apiKey={_configuration["NewsApi:ApiKey"]}");
+                $"{_configuration["NewsApi:ApiUrl"]}/everything?q={query}&from={DateTime.Now.Date.AddDays(-1):yyyy-dd-MM}&apiKey={_configuration["NewsApi:ApiKey"]}");
 
             if (!response.IsSuccessStatusCode)
             {
@@ -68,7 +67,7 @@ namespace ApiAggregator.Features.NewsApi
             }
 
             if (sortBy == "date")
-            {The API Aggregator is a .NET-core application designed to aggr
+            {
                 articles = articles.OrderByDescending(x => x.PublishedAt);
             }
             else if (sortBy == "source")
